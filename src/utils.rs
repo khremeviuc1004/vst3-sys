@@ -37,6 +37,11 @@ impl<I: ComInterface + ?Sized> SharedVstPtr<I> {
 }
 
 impl<I: ComInterface + ?Sized> StaticVstPtr<I> {
+
+    pub fn new(ptr: *mut *mut <I as ComInterface>::VTable) -> Self {
+        Self { ptr }
+    }
+
     pub fn as_ptr(&mut self) -> *mut *mut <I as ComInterface>::VTable {
         self.ptr
     }
